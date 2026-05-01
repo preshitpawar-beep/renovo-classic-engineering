@@ -39,7 +39,7 @@ export default function Careers() {
 
             <FadeIn delay={0.4}>
               <p className="careers__lead">
-                Renovo Classic Engineering hopes to integrate with the local Dallas–Fort Worth community —
+                Renovo Classic Engineering hopes to integrate with the local Austin community —
                 not only by offering a service, but by providing meaningful employment.
                 Starting small, with plans to expand.
               </p>

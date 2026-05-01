@@ -17,7 +17,7 @@ export default function Footer() {
         <div className="footer__cols">
           <div className="footer__col">
             <h4 className="footer__col-title">Visit</h4>
-            <p>Coming soon to Dallas–Fort Worth, Texas.</p>
+            <p>Coming soon to Austin, Texas.</p>
             <p>Currently based in England.</p>
           </div>
           <div className="footer__col">
@@ -42,7 +42,7 @@ export default function Footer() {
       </div>
 
       <div className="footer__bottom container">
-        <p className="footer__copy">&copy; 2025 Renovo Classic Engineering. All rights reserved.</p>
+        <p className="footer__copy">&copy; 2026 Renovo Classic Engineering. All rights reserved.</p>
         <p className="footer__made">
           <span className="italic-serif">Built with care</span>
           <span className="footer__dot" />

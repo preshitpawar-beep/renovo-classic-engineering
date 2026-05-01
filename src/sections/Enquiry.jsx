@@ -52,7 +52,7 @@ export default function Enquiry() {
                 </div>
                 <div className="contact-row">
                   <span className="contact-row__label">Heading to</span>
-                  <span className="contact-row__value">🇺🇸 Dallas–Fort Worth, Texas</span>
+                  <span className="contact-row__value">🇺🇸 Austin, Texas</span>
                 </div>
                 <div className="contact-row">
                   <span className="contact-row__label">Instagram</span>
