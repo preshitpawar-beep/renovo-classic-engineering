@@ -170,7 +170,7 @@ export default function About() {
           </div>
           <div className="stat">
             <div className="stat__num">🇬🇧→🇺🇸</div>
-            <div className="stat__label">From England to DFW</div>
+            <div className="stat__label">From England to Austin</div>
           </div>
           <div className="stat">
             <div className="stat__num">1977</div>
