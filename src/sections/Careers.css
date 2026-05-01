@@ -1,0 +1,169 @@
+.careers {
+  background: var(--bg-base);
+  padding: 8rem 0;
+}
+
+.careers__grid {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  gap: 5rem;
+  align-items: start;
+}
+
+.careers .eyebrow {
+  margin-bottom: 1.6rem;
+}
+
+.careers__title {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 300;
+  font-size: clamp(2.4rem, 4vw, 3.8rem);
+  line-height: 1.0;
+  color: var(--cream);
+  margin-bottom: 2rem;
+  letter-spacing: -0.015em;
+}
+
+.careers__title-line { display: block; }
+
+.careers__title-line--italic {
+  font-style: italic;
+  color: var(--brass);
+}
+
+.careers__lead {
+  font-size: 1.05rem;
+  line-height: 1.8;
+  color: var(--cream-soft);
+  margin-bottom: 2rem;
+  max-width: 48ch;
+}
+
+.careers__note {
+  font-size: 0.88rem;
+  line-height: 1.7;
+  color: var(--text-dim);
+  border-left: 2px solid var(--brass-dim);
+  padding-left: 1.2rem;
+  font-style: italic;
+}
+
+.careers__note-tag {
+  display: inline-block;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.62rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--brass);
+  font-style: normal;
+  margin-right: 0.6rem;
+  font-weight: 500;
+}
+
+/* Role cards */
+.careers__roles {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+
+.role-card {
+  background: var(--bg-panel);
+  border: 1px solid var(--border);
+  padding: 2rem 2.2rem;
+  transition: border-color 0.4s ease, background 0.4s ease;
+  cursor: default;
+}
+
+.role-card:hover {
+  border-color: var(--border-brass);
+  background: var(--bg-elev);
+}
+
+.role-card__head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.role-card__title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.7rem;
+  font-weight: 500;
+  color: var(--cream);
+  letter-spacing: -0.01em;
+}
+
+.role-card__salary {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: 1.1rem;
+  color: var(--brass);
+}
+
+.role-card__desc {
+  font-size: 0.92rem;
+  line-height: 1.75;
+  color: var(--text-mute);
+  margin-bottom: 1.6rem;
+}
+
+.role-card__perks {
+  display: grid;
+  grid-template-columns: 1fr 1.5fr;
+  gap: 1rem;
+  padding: 1.2rem 0;
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  margin-bottom: 1.4rem;
+}
+
+.role-card__perk {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+.perk-label {
+  font-size: 0.62rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--text-dim);
+  font-weight: 500;
+}
+
+.perk-value {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1rem;
+  color: var(--cream);
+}
+
+.role-card__cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-size: 0.72rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--brass);
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.3s ease, gap 0.3s ease;
+}
+
+.role-card__cta:hover {
+  color: var(--brass-bright);
+  gap: 0.9rem;
+}
+
+@media (max-width: 900px) {
+  .careers__grid {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+  .role-card { padding: 1.6rem 1.4rem; }
+  .role-card__perks { grid-template-columns: 1fr; gap: 1rem; }
+}
