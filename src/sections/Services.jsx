@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import { motion } from 'framer-motion'
 import AnimatedText from '../components/AnimatedText'
 import FadeIn from '../components/FadeIn'
@@ -9,7 +10,7 @@ const services = [
     title: 'Engine Work',
     sub: 'A personal favourite',
     desc: 'Detailed and extensive engine work to freshen up the beating heart of your beloved vehicle. Either as a crate engine or a drive-in, drive-out service. Speak to us and let us know your requirements.',
-    image: '/services/engine.jpg',  // place your photo at public/services/engine.jpg
+    image: '/services/engine.jpg',
   },
   {
     num: '02',
@@ -41,6 +42,54 @@ const services = [
   },
 ]
 
+function ServiceCard({ s, i }) {
+  const [imageLoaded, setImageLoaded] = useState(false)
+  const [imageError, setImageError] = useState(false)
+
+  return (
+    <motion.article
+      className="svc-card"
+      whileHover={{ y: -6 }}
+      transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
+    >
+      <div className="svc-card__image-wrap">
+        {/* Fallback shown only when no image loaded yet OR error */}
+        {(!imageLoaded || imageError) && (
+          <div className="svc-card__image-fallback">
+            <span className="svc-card__num-large">{s.num}</span>
+          </div>
+        )}
+
+        {/* Image hidden until loaded; hidden permanently if error */}
+        {!imageError && (
+          <img
+            src={s.image}
+            alt={s.title}
+            className="svc-card__image"
+            loading="lazy"
+            style={{ opacity: imageLoaded ? 1 : 0 }}
+            onLoad={() => setImageLoaded(true)}
+            onError={() => setImageError(true)}
+          />
+        )}
+
+        <div className="svc-card__image-overlay" />
+      </div>
+
+      <div className="svc-card__body">
+        <div className="svc-card__head">
+          <span className="svc-card__num">{s.num}</span>
+          <span className="svc-card__sub">{s.sub}</span>
+        </div>
+        <h3 className="svc-card__title">{s.title}</h3>
+        <p className="svc-card__desc">{s.desc}</p>
+
+        <div className="svc-card__line" />
+      </div>
+    </motion.article>
+  )
+}
+
 export default function Services() {
   return (
     <section className="services" id="services">
@@ -66,40 +115,7 @@ export default function Services() {
         <div className="services__grid">
           {services.map((s, i) => (
             <FadeIn key={s.num} delay={(i % 3) * 0.1} y={40}>
-              <motion.article
-                className="svc-card"
-                whileHover={{ y: -6 }}
-                transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
-              >
-                {/* Image area — hides gracefully if image missing */}
-                <div className="svc-card__image-wrap">
-                  <img
-                    src={s.image}
-                    alt={s.title}
-                    className="svc-card__image"
-                    loading="lazy"
-                    onError={(e) => {
-                      e.target.style.display = 'none'
-                      e.target.parentElement.classList.add('svc-card__image-wrap--placeholder')
-                    }}
-                  />
-                  <div className="svc-card__image-fallback">
-                    <span className="svc-card__num-large">{s.num}</span>
-                  </div>
-                  <div className="svc-card__image-overlay" />
-                </div>
-
-                <div className="svc-card__body">
-                  <div className="svc-card__head">
-                    <span className="svc-card__num">{s.num}</span>
-                    <span className="svc-card__sub">{s.sub}</span>
-                  </div>
-                  <h3 className="svc-card__title">{s.title}</h3>
-                  <p className="svc-card__desc">{s.desc}</p>
-
-                  <div className="svc-card__line" />
-                </div>
-              </motion.article>
+              <ServiceCard s={s} i={i} />
             </FadeIn>
           ))}
         </div>
