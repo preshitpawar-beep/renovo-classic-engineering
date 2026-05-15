@@ -56,7 +56,7 @@ export default function Enquiry() {
                 </div>
                 <div className="contact-row">
                   <span className="contact-row__label">Instagram</span>
-                  <a className="contact-row__value" href="https://www.instagram.com/ellcof/" target="_blank" rel="noopener noreferrer">@ellcof</a>
+                  <a className="contact-row__value" href="https://www.instagram.com/ellcof/" target="_blank" rel="noopener noreferrer">@renovo_classic_engineering</a>
                 </div>
               </div>
             </FadeIn>
