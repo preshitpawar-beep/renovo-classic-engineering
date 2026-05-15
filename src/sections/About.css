@@ -10,11 +10,12 @@
 .about__grid {
   display: grid;
   grid-template-columns: 1.05fr 1fr;
-  gap: 6rem;
-  align-items: center;
+  gap: 5rem;
+  align-items: start;
   margin-bottom: 6rem;
 }
 
+/* ── COPY (left) ── */
 .about__title {
   font-family: 'Cormorant Garamond', serif;
   font-weight: 300;
@@ -25,9 +26,7 @@
   letter-spacing: -0.015em;
 }
 
-.about__title-line {
-  display: block;
-}
+.about__title-line { display: block; }
 
 .about__title-line--italic {
   font-style: italic;
@@ -54,44 +53,52 @@
   font-weight: 400;
 }
 
-/* Visual */
-.about__visual-wrap {
-  position: relative;
+/* ── VISUALS COLUMN (right) ── */
+.about__visuals {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
 }
 
-.about__visual {
+/* Shared corner brackets */
+.about__corners span {
+  position: absolute;
+  width: 22px;
+  height: 22px;
+  border-color: var(--brass);
+  border-style: solid;
+  border-width: 0;
+  z-index: 4;
+  pointer-events: none;
+}
+
+.c-tl { top: 0; left: 0;     border-top-width: 2px; border-left-width: 2px; }
+.c-tr { top: 0; right: 0;    border-top-width: 2px; border-right-width: 2px; }
+.c-bl { bottom: 0; left: 0;  border-bottom-width: 2px; border-left-width: 2px; }
+.c-br { bottom: 0; right: 0; border-bottom-width: 2px; border-right-width: 2px; }
+
+/* ── ELLIOTT PORTRAIT ── */
+.about__portrait {
   position: relative;
   aspect-ratio: 4/5;
   background: var(--bg-panel);
   overflow: hidden;
 }
 
-.about__visual-corners span {
-  position: absolute;
-  width: 24px;
-  height: 24px;
-  border-color: var(--brass);
-  border-style: solid;
-  border-width: 0;
-  z-index: 2;
-}
-
-.corner-tl { top: 0; left: 0;     border-top-width: 2px; border-left-width: 2px; }
-.corner-tr { top: 0; right: 0;    border-top-width: 2px; border-right-width: 2px; }
-.corner-bl { bottom: 0; left: 0;  border-bottom-width: 2px; border-left-width: 2px; }
-.corner-br { bottom: 0; right: 0; border-bottom-width: 2px; border-right-width: 2px; }
-
-.about__svg {
+.about__portrait-img {
   width: 100%;
   height: 100%;
+  object-fit: cover;
   display: block;
+  position: relative;
+  z-index: 1;
 }
 
 .about__caption {
   position: absolute;
   bottom: 0; left: 0; right: 0;
-  background: linear-gradient(to top, rgba(10,10,11,0.95), rgba(10,10,11,0.7) 80%, transparent);
-  padding: 1.6rem 1.8rem 1.4rem;
+  background: linear-gradient(to top, rgba(10,10,11,0.96), rgba(10,10,11,0.75) 70%, transparent);
+  padding: 1.8rem 1.8rem 1.4rem;
   display: flex;
   align-items: center;
   gap: 1rem;
@@ -127,7 +134,64 @@
   margin-top: 4px;
 }
 
-/* Stats */
+/* ── ALFA STRIP ── */
+.about__alfa {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+
+.about__alfa-tag {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  padding-left: 0.1rem;
+}
+
+.about__alfa-tag-line {
+  width: 22px;
+  height: 1px;
+  background: var(--brass);
+}
+
+.about__alfa-tag-text {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: 0.92rem;
+  color: var(--brass);
+  letter-spacing: 0.01em;
+}
+
+.about__alfa-image {
+  position: relative;
+  aspect-ratio: 16/9;
+  overflow: hidden;
+  background: var(--bg-panel);
+}
+
+.about__alfa-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  position: relative;
+  z-index: 1;
+  transition: transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.about__alfa-image:hover .about__alfa-img {
+  transform: scale(1.04);
+}
+
+.about__alfa-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, transparent 60%, rgba(10,10,11,0.4) 100%);
+  z-index: 2;
+  pointer-events: none;
+}
+
+/* ── STATS ── */
 .about__stats {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -169,15 +233,20 @@
   font-weight: 500;
 }
 
+/* ── RESPONSIVE ── */
 @media (max-width: 900px) {
   .about__grid {
     grid-template-columns: 1fr;
     gap: 3rem;
   }
+  .about__visuals { gap: 1.5rem; }
   .about__stats {
     grid-template-columns: repeat(2, 1fr);
     gap: 2rem 0;
   }
   .stat:nth-child(2) { border-right: none; }
-  .stat:nth-child(1), .stat:nth-child(2) { padding-bottom: 2rem; border-bottom: 1px solid var(--border); }
+  .stat:nth-child(1), .stat:nth-child(2) {
+    padding-bottom: 2rem;
+    border-bottom: 1px solid var(--border);
+  }
 }

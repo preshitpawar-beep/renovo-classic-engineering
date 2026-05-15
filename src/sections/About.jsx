@@ -12,6 +12,7 @@ export default function About() {
         </FadeIn>
 
         <div className="about__grid">
+          {/* LEFT — copy */}
           <div className="about__copy">
             <h2 className="about__title">
               <AnimatedText text="A life shaped" el="span" className="about__title-line" />
@@ -53,93 +54,22 @@ export default function About() {
             </FadeIn>
           </div>
 
-          <FadeIn delay={0.3} y={50} className="about__visual-wrap">
-            <div className="about__visual">
-              <div className="about__visual-corners">
-                <span className="corner-tl" />
-                <span className="corner-tr" />
-                <span className="corner-bl" />
-                <span className="corner-br" />
+          {/* RIGHT — visuals stacked */}
+          <FadeIn delay={0.3} y={50} className="about__visuals">
+
+            {/* TOP — Elliott portrait */}
+            <div className="about__portrait">
+              <div className="about__corners">
+                <span className="c-tl" /><span className="c-tr" />
+                <span className="c-bl" /><span className="c-br" />
               </div>
 
-              {/* SVG illustration: Alfa Spider silhouette */}
-              <svg viewBox="0 0 400 500" xmlns="http://www.w3.org/2000/svg" className="about__svg">
-                {/* Background */}
-                <defs>
-                  <linearGradient id="bgGrad" x1="0%" y1="0%" x2="0%" y2="100%">
-                    <stop offset="0%" stopColor="#1d1d22" />
-                    <stop offset="100%" stopColor="#0e0e0f" />
-                  </linearGradient>
-                  <radialGradient id="glowGrad" cx="50%" cy="40%" r="60%">
-                    <stop offset="0%" stopColor="#b8945c" stopOpacity="0.18" />
-                    <stop offset="100%" stopColor="#b8945c" stopOpacity="0" />
-                  </radialGradient>
-                </defs>
-
-                <rect width="400" height="500" fill="url(#bgGrad)" />
-                <circle cx="200" cy="200" r="140" fill="url(#glowGrad)" />
-
-                {/* Decorative arc — like a spotlight */}
-                <path d="M60 320 Q200 220 340 320" stroke="#b8945c" strokeWidth="0.5" fill="none" opacity="0.3" />
-
-                {/* Alfa Romeo Spider silhouette — 3/4 view */}
-                <g transform="translate(40, 250)">
-                  {/* Shadow */}
-                  <ellipse cx="160" cy="170" rx="150" ry="6" fill="#000" opacity="0.5" />
-
-                  {/* Body */}
-                  <path
-                    d="M20,120 Q30,90 70,80 L120,72 Q160,62 200,62 Q250,62 280,82 L310,100 Q320,114 320,120 L20,120 Z"
-                    fill="#3a3d42"
-                  />
-                  {/* Hood top + windscreen */}
-                  <path d="M70,80 Q90,55 130,52 L210,52 Q235,52 250,78 L280,82 L70,80 Z" fill="#2a2c30" />
-                  {/* Windscreen */}
-                  <path d="M95,80 Q110,60 130,58 L195,58 Q210,60 215,80 L95,80 Z" fill="#16161a" />
-                  {/* Bonnet line */}
-                  <line x1="20" y1="115" x2="320" y2="115" stroke="#b8945c" strokeWidth="0.8" opacity="0.5" />
-                  {/* Door line */}
-                  <line x1="160" y1="80" x2="158" y2="120" stroke="#0e0e0f" strokeWidth="1" />
-
-                  {/* Chrome trim — brass colour */}
-                  <line x1="20" y1="120" x2="320" y2="120" stroke="#b8945c" strokeWidth="1" opacity="0.7" />
-
-                  {/* Wheels */}
-                  <circle cx="78" cy="140" r="22" fill="#16161a" />
-                  <circle cx="78" cy="140" r="14" fill="#0e0e0f" />
-                  <circle cx="78" cy="140" r="10" fill="#b8945c" opacity="0.85" />
-                  <circle cx="78" cy="140" r="5" fill="#d4a96a" />
-                  {/* spokes */}
-                  <line x1="78" y1="130" x2="78" y2="150" stroke="#0e0e0f" strokeWidth="1.2" />
-                  <line x1="68" y1="140" x2="88" y2="140" stroke="#0e0e0f" strokeWidth="1.2" />
-                  <line x1="71" y1="133" x2="85" y2="147" stroke="#0e0e0f" strokeWidth="1.2" />
-                  <line x1="85" y1="133" x2="71" y2="147" stroke="#0e0e0f" strokeWidth="1.2" />
-
-                  <circle cx="262" cy="140" r="22" fill="#16161a" />
-                  <circle cx="262" cy="140" r="14" fill="#0e0e0f" />
-                  <circle cx="262" cy="140" r="10" fill="#b8945c" opacity="0.85" />
-                  <circle cx="262" cy="140" r="5" fill="#d4a96a" />
-                  <line x1="262" y1="130" x2="262" y2="150" stroke="#0e0e0f" strokeWidth="1.2" />
-                  <line x1="252" y1="140" x2="272" y2="140" stroke="#0e0e0f" strokeWidth="1.2" />
-                  <line x1="255" y1="133" x2="269" y2="147" stroke="#0e0e0f" strokeWidth="1.2" />
-                  <line x1="269" y1="133" x2="255" y2="147" stroke="#0e0e0f" strokeWidth="1.2" />
-
-                  {/* Headlight */}
-                  <ellipse cx="32" cy="105" rx="9" ry="6" fill="#f4ecd8" opacity="0.85" />
-                  <ellipse cx="32" cy="105" rx="5" ry="3" fill="#fdfbf6" />
-
-                  {/* Door handle */}
-                  <rect x="155" y="98" width="14" height="3" rx="1.5" fill="#b8945c" opacity="0.8" />
-                </g>
-
-                {/* Caption */}
-                <text x="200" y="430" textAnchor="middle" fontFamily="Cormorant Garamond, serif" fontSize="14" fill="#b8945c" fontStyle="italic" letterSpacing="2">
-                  1977 Alfa Romeo Spider
-                </text>
-                <text x="200" y="450" textAnchor="middle" fontFamily="Inter, sans-serif" fontSize="9" fill="#666058" letterSpacing="3">
-                  ELLIOTT'S OWN — NOW IN TEXAS
-                </text>
-              </svg>
+              <img
+                src="/elliott.jpg"
+                alt="Elliott — Founder of Renovo Classic Engineering"
+                className="about__portrait-img"
+                loading="lazy"
+              />
 
               <motion.div
                 className="about__caption"
@@ -155,6 +85,29 @@ export default function About() {
                 </div>
               </motion.div>
             </div>
+
+            {/* BOTTOM — Alfa Spider strip */}
+            <div className="about__alfa">
+              <div className="about__alfa-tag">
+                <span className="about__alfa-tag-line" />
+                <span className="about__alfa-tag-text">His 1977 Alfa Romeo Spider · Swiss Alps</span>
+              </div>
+
+              <div className="about__alfa-image">
+                <div className="about__corners">
+                  <span className="c-tl" /><span className="c-tr" />
+                  <span className="c-bl" /><span className="c-br" />
+                </div>
+                <img
+                  src="/alfa-spider.jpg"
+                  alt="Elliott's 1977 Alfa Romeo Spider during a European road trip"
+                  className="about__alfa-img"
+                  loading="lazy"
+                />
+                <div className="about__alfa-overlay" />
+              </div>
+            </div>
+
           </FadeIn>
         </div>
 
