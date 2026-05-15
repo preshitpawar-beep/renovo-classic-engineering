@@ -4,41 +4,32 @@ import AnimatedText from '../components/AnimatedText'
 import FadeIn from '../components/FadeIn'
 import './Instagram.css'
 
+const IG_HANDLE = 'renovo_classic_engineering'
+const IG_URL = 'https://www.instagram.com/renovo_classic_engineering/'
+
+/* Slides — first cell of slide 1 is the real first post.
+   All other cells are illustrated placeholders for now;
+   replace them as Elliott adds new posts. */
 const slides = [
   [
-    { label: 'Engine work',     bg: '#1a1816', kind: 'engine' },
-    { label: 'Restoration',     bg: '#0e0c0a', kind: 'car' },
-    { label: 'Wheels & chrome', bg: '#0a0908', kind: 'wheel' },
+    {
+      type: 'real',
+      label: 'Engine work · Alfa twin-cam',
+      href: 'https://www.instagram.com/p/DYVUj_rjszD/',
+      image: '/instagram/post-1.jpg',
+    },
+    { type: 'svg', label: 'Coming soon', kind: 'car' },
+    { type: 'svg', label: 'Coming soon', kind: 'wheel' },
   ],
   [
-    { label: 'Paint & finish',  bg: '#100e0a', kind: 'paint' },
-    { label: 'Interior detail', bg: '#120e08', kind: 'wheel-int' },
-    { label: 'Before & after',  bg: '#0e0c08', kind: 'beforeafter' },
+    { type: 'svg', label: 'Coming soon', kind: 'paint' },
+    { type: 'svg', label: 'Coming soon', kind: 'wheel-int' },
+    { type: 'svg', label: 'Coming soon', kind: 'beforeafter' },
   ],
 ]
 
 const renderSVG = (kind) => {
   switch (kind) {
-    case 'engine':
-      return (
-        <svg viewBox="0 0 300 300" xmlns="http://www.w3.org/2000/svg" style={{ width: '100%', height: '100%' }}>
-          <rect width="300" height="300" fill="#1a1816" />
-          <rect x="60" y="92" width="180" height="120" rx="6" fill="#2a2a2a" />
-          <rect x="70" y="102" width="160" height="100" rx="4" fill="#1a1a1a" />
-          <rect x="78" y="80" width="26" height="46" rx="4" fill="#2a2a2a" />
-          <rect x="114" y="80" width="26" height="46" rx="4" fill="#2a2a2a" />
-          <rect x="150" y="80" width="26" height="46" rx="4" fill="#2a2a2a" />
-          <rect x="186" y="80" width="26" height="46" rx="4" fill="#2a2a2a" />
-          <rect x="80" y="72" width="22" height="14" rx="3" fill="#b8945c" opacity=".85" />
-          <rect x="116" y="72" width="22" height="14" rx="3" fill="#b8945c" opacity=".85" />
-          <rect x="152" y="72" width="22" height="14" rx="3" fill="#b8945c" opacity=".85" />
-          <rect x="188" y="72" width="22" height="14" rx="3" fill="#b8945c" opacity=".85" />
-          <circle cx="150" cy="152" r="22" fill="#2a2a2a" />
-          <circle cx="150" cy="152" r="14" fill="#b8945c" opacity=".25" />
-          <circle cx="150" cy="152" r="8" fill="#b8945c" opacity=".7" />
-          <text x="150" y="270" textAnchor="middle" fontFamily="Cormorant Garamond, serif" fontStyle="italic" fontSize="14" fill="#b8945c" opacity=".4">engine</text>
-        </svg>
-      )
     case 'car':
       return (
         <svg viewBox="0 0 300 300" xmlns="http://www.w3.org/2000/svg" style={{ width: '100%', height: '100%' }}>
@@ -49,11 +40,10 @@ const renderSVG = (kind) => {
           <path d="M112,166 Q120,120 140,112 L198,104 Q222,104 238,124 L248,166Z" fill="#16161a" />
           <path d="M126,162 Q134,124 148,116 L192,108 L192,124 L192,162Z" fill="rgba(244,236,216,.18)" />
           <path d="M204,162 L204,118 Q220,112 232,126 L242,162Z" fill="rgba(244,236,216,.15)" />
-          <circle cx="78" cy="194" r="28" fill="#16161a" /><circle cx="78" cy="194" r="20" fill="#0a0a0b" /><circle cx="78" cy="194" r="13" fill="#b8945c" /><circle cx="78" cy="194" r="6" fill="#d4a96a" />
-          <circle cx="226" cy="194" r="28" fill="#16161a" /><circle cx="226" cy="194" r="20" fill="#0a0a0b" /><circle cx="226" cy="194" r="13" fill="#b8945c" /><circle cx="226" cy="194" r="6" fill="#d4a96a" />
+          <circle cx="78" cy="194" r="28" fill="#16161a" /><circle cx="78" cy="194" r="20" fill="#0a0a0b" /><circle cx="78" cy="194" r="13" fill="#b8945c" />
+          <circle cx="226" cy="194" r="28" fill="#16161a" /><circle cx="226" cy="194" r="20" fill="#0a0a0b" /><circle cx="226" cy="194" r="13" fill="#b8945c" />
           <line x1="28" y1="180" x2="272" y2="180" stroke="#b8945c" strokeWidth="1.5" opacity=".7" />
-          <ellipse cx="38" cy="168" rx="10" ry="8" fill="#f4ecd8" opacity=".85" />
-          <text x="150" y="270" textAnchor="middle" fontFamily="Cormorant Garamond, serif" fontStyle="italic" fontSize="14" fill="#b8945c" opacity=".4">restoration</text>
+          <text x="150" y="270" textAnchor="middle" fontFamily="Cormorant Garamond, serif" fontStyle="italic" fontSize="14" fill="#b8945c" opacity=".4">coming soon</text>
         </svg>
       )
     case 'wheel':
@@ -64,7 +54,6 @@ const renderSVG = (kind) => {
           <circle cx="150" cy="150" r="120" fill="#0e0e0f" />
           <circle cx="150" cy="150" r="125" fill="none" stroke="#1d1d22" strokeWidth="6" strokeDasharray="18 12" />
           <circle cx="150" cy="150" r="95" fill="#1d1d22" />
-          <circle cx="150" cy="150" r="88" fill="#252525" />
           <line x1="150" y1="62" x2="150" y2="238" stroke="#b8945c" strokeWidth="3.5" opacity=".75" />
           <line x1="62" y1="150" x2="238" y2="150" stroke="#b8945c" strokeWidth="3.5" opacity=".75" />
           <line x1="84" y1="84" x2="216" y2="216" stroke="#b8945c" strokeWidth="3.5" opacity=".75" />
@@ -73,7 +62,6 @@ const renderSVG = (kind) => {
           <circle cx="150" cy="150" r="34" fill="#b8945c" opacity=".25" />
           <circle cx="150" cy="150" r="26" fill="#b8945c" opacity=".5" />
           <circle cx="150" cy="150" r="18" fill="#1d1d22" />
-          <text x="150" y="155" textAnchor="middle" fontFamily="Cormorant Garamond, serif" fontWeight="600" fontSize="9" fill="#b8945c">RCE</text>
         </svg>
       )
     case 'paint':
@@ -86,7 +74,6 @@ const renderSVG = (kind) => {
           <circle cx="226" cy="94" r="8" fill="#b8945c" opacity=".8" />
           <rect x="136" y="116" width="24" height="48" rx="5" fill="#2a2a2a" />
           <rect x="156" y="126" width="20" height="10" rx="2" fill="#b8945c" opacity=".7" />
-          <path d="M144 164 Q132 190 105 198 Q78 206 72 226" fill="none" stroke="#2a2a2a" strokeWidth="8" strokeLinecap="round" />
           <ellipse cx="258" cy="76" rx="35" ry="28" fill="#b8945c" opacity=".1" />
           <ellipse cx="264" cy="72" rx="22" ry="17" fill="#b8945c" opacity=".18" />
           <ellipse cx="270" cy="68" rx="13" ry="11" fill="#b8945c" opacity=".28" />
@@ -94,7 +81,6 @@ const renderSVG = (kind) => {
           <rect x="30" y="92" width="44" height="30" rx="3" fill="#5a4a3a" />
           <rect x="30" y="129" width="44" height="30" rx="3" fill="#2a3a2a" />
           <rect x="30" y="166" width="44" height="30" rx="3" fill="#b8945c" opacity=".75" />
-          <text x="150" y="270" textAnchor="middle" fontFamily="Cormorant Garamond, serif" fontStyle="italic" fontSize="14" fill="#b8945c" opacity=".4">paint</text>
         </svg>
       )
     case 'wheel-int':
@@ -109,9 +95,6 @@ const renderSVG = (kind) => {
           <line x1="210" y1="200" x2="184" y2="181" stroke="#b8945c" strokeWidth="6" strokeLinecap="round" opacity=".85" />
           <circle cx="150" cy="162" r="22" fill="#2a2a2a" />
           <circle cx="150" cy="162" r="16" fill="#b8945c" opacity=".25" />
-          <text x="150" y="167" textAnchor="middle" fontFamily="Cormorant Garamond, serif" fontWeight="600" fontSize="10" fill="#b8945c">RCE</text>
-          <circle cx="80" cy="220" r="26" fill="#2a2a2a" /><circle cx="80" cy="220" r="20" fill="#16161a" /><line x1="80" y1="220" x2="80" y2="207" stroke="#b8945c" strokeWidth="2.5" />
-          <circle cx="220" cy="220" r="26" fill="#2a2a2a" /><circle cx="220" cy="220" r="20" fill="#16161a" /><line x1="220" y1="220" x2="228" y2="208" stroke="#b8945c" strokeWidth="2.5" />
         </svg>
       )
     case 'beforeafter':
@@ -119,20 +102,7 @@ const renderSVG = (kind) => {
         <svg viewBox="0 0 300 300" xmlns="http://www.w3.org/2000/svg" style={{ width: '100%', height: '100%' }}>
           <rect width="300" height="300" fill="#0e0c08" />
           <rect x="0" y="0" width="147" height="300" fill="#1d1816" />
-          <g transform="translate(0,82) scale(0.72)">
-            <path d="M18,130 Q30,85 75,72 L110,62 L160,48 Q190,45 215,62 L265,82 L280,130Z" fill="#5a4830" />
-            <path d="M18,130 Q55,124 90,118 L258,118 Q272,118 280,130Z" fill="#4a3820" />
-            <circle cx="72" cy="148" r="32" fill="#2a1a0a" /><circle cx="72" cy="148" r="22" fill="#1a0a00" /><circle cx="72" cy="148" r="14" fill="#6b4a1a" />
-            <circle cx="222" cy="148" r="32" fill="#2a1a0a" /><circle cx="222" cy="148" r="22" fill="#1a0a00" /><circle cx="222" cy="148" r="14" fill="#6b4a1a" />
-          </g>
           <rect x="153" y="0" width="147" height="300" fill="#0a0908" />
-          <g transform="translate(153,82) scale(0.72)">
-            <path d="M18,130 Q30,85 75,72 L110,62 L160,48 Q190,45 215,62 L265,82 L280,130Z" fill="#3a3d42" />
-            <path d="M18,130 Q55,124 90,118 L258,118 Q272,118 280,130Z" fill="#2a2c30" />
-            <circle cx="72" cy="148" r="32" fill="#0f0f0f" /><circle cx="72" cy="148" r="22" fill="#060606" /><circle cx="72" cy="148" r="14" fill="#b8945c" /><circle cx="72" cy="148" r="6" fill="#d4a96a" />
-            <circle cx="222" cy="148" r="32" fill="#0f0f0f" /><circle cx="222" cy="148" r="22" fill="#060606" /><circle cx="222" cy="148" r="14" fill="#b8945c" /><circle cx="222" cy="148" r="6" fill="#d4a96a" />
-            <line x1="18" y1="130" x2="280" y2="130" stroke="#b8945c" strokeWidth="2" opacity=".7" />
-          </g>
           <rect x="147" y="0" width="6" height="300" fill="#b8945c" opacity=".9" />
           <rect x="6" y="8" width="62" height="18" rx="2" fill="rgba(0,0,0,.65)" />
           <text x="36" y="21" textAnchor="middle" fontFamily="Inter, sans-serif" fontSize="9" fill="#888" letterSpacing="2">BEFORE</text>
@@ -140,7 +110,8 @@ const renderSVG = (kind) => {
           <text x="188" y="21" textAnchor="middle" fontFamily="Inter, sans-serif" fontSize="9" fill="#b8945c" letterSpacing="2">AFTER</text>
         </svg>
       )
-    default: return null
+    default:
+      return null
   }
 }
 
@@ -159,19 +130,19 @@ export default function Instagram() {
               <span className="eyebrow">Follow the Journey</span>
             </FadeIn>
             <h2 className="insta__title">
-              <AnimatedText text="@ellcof" el="span" className="insta__title-line" />
+              <AnimatedText text="@renovo_classic_engineering" el="span" className="insta__title-line" />
               <AnimatedText text="on Instagram" el="span" className="insta__title-line insta__title-line--italic" delay={0.15} />
             </h2>
           </div>
 
           <FadeIn delay={0.3}>
-            <a href="https://www.instagram.com/ellcof/" target="_blank" rel="noopener noreferrer" className="insta__follow">
+            <a href={IG_URL} target="_blank" rel="noopener noreferrer" className="insta__follow">
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
                 <rect x="2" y="2" width="20" height="20" rx="5" />
                 <circle cx="12" cy="12" r="5" />
                 <circle cx="17.5" cy="6.5" r="1.5" fill="currentColor" stroke="none" />
               </svg>
-              Follow @ellcof
+              Follow @{IG_HANDLE}
             </a>
           </FadeIn>
         </div>
@@ -189,12 +160,17 @@ export default function Instagram() {
               {slides[active].map((cell, i) => (
                 <a
                   key={i}
-                  href="https://www.instagram.com/ellcof/"
+                  href={cell.href || IG_URL}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="insta__cell"
+                  className={`insta__cell ${cell.type === 'real' ? 'insta__cell--real' : ''}`}
+                  aria-label={cell.label}
                 >
-                  {renderSVG(cell.kind)}
+                  {cell.type === 'real' ? (
+                    <img src={cell.image} alt={cell.label} loading="lazy" className="insta__cell-img" />
+                  ) : (
+                    renderSVG(cell.kind)
+                  )}
                   <div className="insta__cell-overlay">
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" width="22" height="22">
                       <rect x="2" y="2" width="20" height="20" rx="5" />
@@ -232,7 +208,7 @@ export default function Instagram() {
 
         <FadeIn delay={0.5}>
           <p className="insta__note">
-            Real Instagram feed coming soon. For now, follow <a href="https://www.instagram.com/ellcof/" target="_blank" rel="noopener noreferrer">@ellcof</a> directly to see Elliott's actual workshop photos and the move from England to Texas.
+            More posts coming as we build. Follow <a href={IG_URL} target="_blank" rel="noopener noreferrer">@{IG_HANDLE}</a> for the latest from the workshop.
           </p>
         </FadeIn>
       </div>
