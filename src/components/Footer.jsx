@@ -23,8 +23,8 @@ export default function Footer() {
           <div className="footer__col">
             <h4 className="footer__col-title">Connect</h4>
             <p>
-              <a href="https://www.instagram.com/ellcof/" target="_blank" rel="noopener noreferrer">
-                Instagram &mdash; @ellcof
+              <a href="https://www.instagram.com/renovo_classic_engineering/" target="_blank" rel="noopener noreferrer">
+                Instagram &mdash; @renovo_classic_engineering
               </a>
             </p>
             <p>
