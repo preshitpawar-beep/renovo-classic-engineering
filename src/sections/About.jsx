@@ -33,7 +33,7 @@ export default function About() {
               <p>
                 Quality and craft were instilled early. Many years of experience have already been gained,
                 blending personal service from independent workshops, cleanliness from dealerships, and the
-                custom creativity of his time at Fast and Furious.
+                custom creativity from his time in Fast and Furious.
               </p>
             </FadeIn>
 
