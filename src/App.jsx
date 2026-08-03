@@ -7,6 +7,7 @@ import Footer from './components/Footer'
 import Hero from './sections/Hero'
 import About from './sections/About'
 import Services from './sections/Services'
+import Testimonials from './sections/Testimonials'
 import Careers from './sections/Careers'
 import Instagram from './sections/Instagram'
 import Enquiry from './sections/Enquiry'
@@ -43,6 +44,7 @@ export default function App() {
         <Hero />
         <About />
         <Services />
+        <Testimonials />
         <Careers />
         <Instagram />
         <Enquiry />
