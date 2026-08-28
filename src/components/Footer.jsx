@@ -28,7 +28,7 @@ export default function Footer() {
               </a>
             </p>
             <p>
-              <a href="mailto:hello@renovoclassic.com">hello@renovoclassic.com</a>
+              <a href="mailto:renovoclassicengineering@gmail.com">renovoclassicengineering@gmail.com</a>
             </p>
           </div>
           <div className="footer__col">
