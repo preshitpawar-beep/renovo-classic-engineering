@@ -221,6 +221,13 @@ a.contact-row__value:hover { color: var(--brass-bright); }
   letter-spacing: 0.06em;
 }
 
+.enquiry__error {
+  margin-top: 1rem;
+  color: #e07a5f;
+  font-size: 0.85rem;
+  line-height: 1.5;
+}
+
 @media (max-width: 900px) {
   .enquiry__grid {
     grid-template-columns: 1fr;

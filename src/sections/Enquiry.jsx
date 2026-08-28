@@ -6,12 +6,36 @@ import './Enquiry.css'
 
 export default function Enquiry() {
   const [submitted, setSubmitted] = useState(false)
+  const [sending, setSending] = useState(false)
+  const [error, setError] = useState('')
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault()
-    setSubmitted(true)
-    setTimeout(() => setSubmitted(false), 5000)
-    e.target.reset()
+    if (sending) return
+    setError('')
+    setSending(true)
+
+    const form = e.target
+    const data = Object.fromEntries(new FormData(form).entries())
+
+    try {
+      const res = await fetch('/api/enquiry', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data),
+      })
+      if (!res.ok) {
+        const info = await res.json().catch(() => ({}))
+        throw new Error(info.error || 'Something went wrong.')
+      }
+      setSubmitted(true)
+      form.reset()
+      setTimeout(() => setSubmitted(false), 6000)
+    } catch (err) {
+      setError(err.message || 'Something went wrong. Please try again.')
+    } finally {
+      setSending(false)
+    }
   }
 
   return (
@@ -56,7 +80,7 @@ export default function Enquiry() {
                 </div>
                 <div className="contact-row">
                   <span className="contact-row__label">Instagram</span>
-                  <a className="contact-row__value" href="https://www.instagram.com/ellcof/" target="_blank" rel="noopener noreferrer">@renovo_classic_engineering</a>
+                  <a className="contact-row__value" href="https://www.instagram.com/renovo_classic_engineering/" target="_blank" rel="noopener noreferrer">@renovo_classic_engineering</a>
                 </div>
               </div>
             </FadeIn>
@@ -68,22 +92,22 @@ export default function Enquiry() {
 
               <div className="field">
                 <label htmlFor="name">Name</label>
-                <input id="name" type="text" placeholder="Your full name" required />
+                <input id="name" name="name" type="text" placeholder="Your full name" required />
               </div>
 
               <div className="field">
                 <label htmlFor="vehicle">Vehicle</label>
-                <input id="vehicle" type="text" placeholder="e.g. 1972 Jaguar E-Type" />
+                <input id="vehicle" name="vehicle" type="text" placeholder="e.g. 1972 Jaguar E-Type" />
               </div>
 
               <div className="field">
                 <label htmlFor="works">Works required</label>
-                <textarea id="works" placeholder="What would you like done? Or just say hello." rows="3" />
+                <textarea id="works" name="works" placeholder="What would you like done? Or just say hello." rows="3" />
               </div>
 
               <div className="field">
                 <label htmlFor="email">Email address</label>
-                <input id="email" type="email" placeholder="your@email.com" required />
+                <input id="email" name="email" type="email" placeholder="your@email.com" required />
               </div>
 
               <div className="field">
@@ -91,7 +115,7 @@ export default function Enquiry() {
                   Coffee order
                   <span className="field__hint italic-serif">(yes, really)</span>
                 </label>
-                <input id="coffee" type="text" placeholder="Flat white, no sugar..." />
+                <input id="coffee" name="coffee" type="text" placeholder="Flat white, no sugar..." />
               </div>
 
               <p className="enquiry__consent">
@@ -103,15 +127,23 @@ export default function Enquiry() {
               <motion.button
                 type="submit"
                 className="enquiry__submit"
-                whileHover={{ y: -2 }}
-                whileTap={{ scale: 0.98 }}
+                whileHover={sending ? undefined : { y: -2 }}
+                whileTap={sending ? undefined : { scale: 0.98 }}
+                disabled={sending}
+                style={sending ? { opacity: 0.65, cursor: 'wait' } : undefined}
               >
-                Send Enquiry
-                <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" strokeWidth="1.5">
-                  <line x1="5" y1="12" x2="19" y2="12" />
-                  <polyline points="13 6 19 12 13 18" />
-                </svg>
+                {sending ? 'Sending…' : 'Send Enquiry'}
+                {!sending && (
+                  <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" strokeWidth="1.5">
+                    <line x1="5" y1="12" x2="19" y2="12" />
+                    <polyline points="13 6 19 12 13 18" />
+                  </svg>
+                )}
               </motion.button>
+
+              {error && (
+                <p className="enquiry__error" role="alert">{error}</p>
+              )}
             </form>
 
             <AnimatePresence>
